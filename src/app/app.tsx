@@ -1,13 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Counter } from '../features/counter/counter'
-import './app.css'
+import { Posts } from '../features/posts/posts'
+import { Navbar } from './navbar'
 
 export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Redux Playground</h1>
-        <Counter />
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="counter" element={<Counter />} />
+        <Route path="/" element={<Posts />} />
+      </Routes>
+    </Router>
   )
 }

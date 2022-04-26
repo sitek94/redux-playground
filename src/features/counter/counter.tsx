@@ -6,7 +6,6 @@ import {
   incrementByAmount,
   selectCount,
 } from './counter.slice'
-import styles from './counter.module.css'
 
 export function Counter() {
   const count = useSelector(selectCount)
@@ -14,33 +13,40 @@ export function Counter() {
   const [incrementAmount, setIncrementAmount] = React.useState('2')
 
   return (
-    <div>
-      <div className={styles.row}>
+    <section>
+      <h2>Counter</h2>
+      <div>
         <button
-          className={styles.button}
           aria-label="Increment value"
           onClick={() => dispatch(increment())}
         >
           +
         </button>
-        <span className={styles.value}>{count}</span>
+        <span
+          style={{
+            display: 'inline-block',
+            textAlign: 'center',
+            fontSize: '2rem',
+            minWidth: 50,
+          }}
+        >
+          {count}
+        </span>
         <button
-          className={styles.button}
           aria-label="Decrement value"
           onClick={() => dispatch(decrement())}
         >
           -
         </button>
       </div>
-      <div className={styles.row}>
+      <div>
         <input
-          className={styles.textbox}
+          type="number"
           aria-label="Set increment amount"
           value={incrementAmount}
           onChange={e => setIncrementAmount(e.target.value)}
         />
         <button
-          className={styles.button}
           onClick={() =>
             dispatch(incrementByAmount(Number(incrementAmount) || 0))
           }
@@ -48,6 +54,6 @@ export function Counter() {
           Add Amount
         </button>
       </div>
-    </div>
+    </section>
   )
 }
