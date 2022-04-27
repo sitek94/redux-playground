@@ -1,20 +1,25 @@
 import * as React from 'react'
-import { useAppDispatch } from '../../app/hooks'
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { postAdded } from './posts.slice'
 
 export const AddPostForm = () => {
   const [title, setTitle] = React.useState('')
   const [content, setContent] = React.useState('')
+  const [userId, setUserId] = React.useState('')
 
+  const users = useAppSelector(state => state.users)
   const dispatch = useAppDispatch()
+
+  const canSave = title && content && userId
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (title && content) {
+    if (canSave) {
       dispatch(
         postAdded({
           title,
           content,
+          userId,
         }),
       )
       setTitle('')
@@ -34,6 +39,19 @@ export const AddPostForm = () => {
           value={title}
           onChange={e => setTitle(e.target.value)}
         />
+        <label htmlFor="postAuthor">Author:</label>
+        <select
+          id="postAuthor"
+          value={userId}
+          onChange={e => setUserId(e.target.value)}
+        >
+          <option value="" />
+          {users.map(user => (
+            <option key={user.id} value={user.id}>
+              {user.name}
+            </option>
+          ))}
+        </select>
         <label htmlFor="postContent">Content:</label>
         <textarea
           id="postContent"
@@ -41,7 +59,9 @@ export const AddPostForm = () => {
           value={content}
           onChange={e => setContent(e.target.value)}
         />
-        <button type="submit">Save Post</button>
+        <button type="submit" disabled={!canSave}>
+          Save Post
+        </button>
       </form>
     </section>
   )

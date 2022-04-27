@@ -2,6 +2,7 @@ import React from 'react'
 import { useAppDispatch, useAppSelector } from '../../app/hooks'
 import { Link } from 'react-router-dom'
 import { postRemoved } from './posts.slice'
+import { PostAuthor } from './post-author'
 
 export function PostsList() {
   const posts = useAppSelector(state => state.posts)
@@ -10,6 +11,7 @@ export function PostsList() {
   const renderedPosts = posts.map(post => (
     <article className="post-excerpt" key={post.id}>
       <h3>{post.title}</h3>
+      <PostAuthor userId={post.userId} />
       <p className="post-content">{post.content.substring(0, 100)}</p>
       <Link to={`/posts/${post.id}`} className="button muted-button">
         View Post
