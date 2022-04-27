@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { Counter } from '../features/counter/counter'
 import { Navbar } from './navbar'
 import { AddPostForm } from '../features/posts/add-post.form'
-import { PostsList } from '../features/posts/post-llist'
+import { PostsList } from '../features/posts/posts-list'
 import { SinglePostPage } from '../features/posts/single-post.page'
 import { EditPostForm } from '../features/posts/edit-post.form'
 

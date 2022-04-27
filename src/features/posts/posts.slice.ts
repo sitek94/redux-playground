@@ -28,10 +28,15 @@ export const postsSlice = createSlice({
         existingPost.content = content
       }
     },
+    postRemoved(state, action) {
+      const id = action.payload
+      const postIndex = state.findIndex(post => post.id === id)
+      state.splice(postIndex, 1)
+    },
   },
 })
 
-export const { postAdded, postUpdated } = postsSlice.actions
+export const { postAdded, postUpdated, postRemoved } = postsSlice.actions
 
 export const selectPosts = (state: RootState) => state.posts
 
