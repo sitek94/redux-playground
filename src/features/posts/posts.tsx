@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { useSelector } from 'react-redux'
 import { selectPosts } from './posts.slice'
-import { AddPostForm } from './add-post-form'
 
 export function Posts() {
   const posts = useSelector(selectPosts)

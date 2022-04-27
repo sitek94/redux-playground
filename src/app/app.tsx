@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Counter } from '../features/counter/counter'
 import { Navbar } from './navbar'
-import { AddPostForm } from '../features/posts/add-post-form'
+import { AddPostForm } from '../features/posts/add-post.form'
 import { PostsList } from '../features/posts/post-llist'
 
 export function App() {
