@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
 
-import counterReducer from '../features/counter/counter.slice'
-import postsReducer from '../features/posts/posts.slice'
+import { counterReducer } from '../features/counter/counter.slice'
+import { postsReducer } from '../features/posts/posts.slice'
+import { usersReducer } from '../features/users/users.slice'
 
 import {
   createPersistMiddleware,
@@ -13,6 +14,7 @@ export const store = configureStore({
   reducer: {
     counter: counterReducer,
     posts: postsReducer,
+    users: usersReducer,
   },
   preloadedState: getPersistedState(),
   middleware: getDefaultMiddleware =>

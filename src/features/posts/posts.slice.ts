@@ -40,4 +40,4 @@ export const { postAdded, postUpdated, postRemoved } = postsSlice.actions
 
 export const selectPosts = (state: RootState) => state.posts
 
-export default postsSlice.reducer
+export const postsReducer = postsSlice.reducer
