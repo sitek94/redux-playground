@@ -6,4 +6,4 @@ My playground for Redux related stuff. The majority of the code is taken from **
 
 ## Todo
 
-- [ ] https://redux.js.org/tutorials/essentials/part-4-using-data#users-and-posts
+- [ ] https://redux.js.org/tutorials/essentials/part-4-using-data#more-post-features
