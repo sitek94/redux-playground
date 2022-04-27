@@ -3,6 +3,7 @@ import { Counter } from '../features/counter/counter'
 import { Navbar } from './navbar'
 import { AddPostForm } from '../features/posts/add-post.form'
 import { PostsList } from '../features/posts/post-llist'
+import { SinglePostPage } from '../features/posts/single-post.page'
 
 export function App() {
   return (
@@ -18,6 +19,7 @@ export function App() {
             </>
           }
         />
+        <Route path="/posts/:postId" element={<SinglePostPage />} />
         <Route path="counter" element={<Counter />} />
       </Routes>
     </Router>
