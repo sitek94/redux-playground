@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, nanoid } from '@reduxjs/toolkit'
+import { createSlice, nanoid, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../../app/store'
 import { Post } from './posts.types'
 
@@ -20,10 +20,18 @@ export const postsSlice = createSlice({
         return { payload: { id, ...payload } }
       },
     },
+    postUpdated(state, action) {
+      const { id, title, content } = action.payload
+      const existingPost = state.find(post => post.id === id)
+      if (existingPost) {
+        existingPost.title = title
+        existingPost.content = content
+      }
+    },
   },
 })
 
-export const { postAdded } = postsSlice.actions
+export const { postAdded, postUpdated } = postsSlice.actions
 
 export const selectPosts = (state: RootState) => state.posts
 
